@@ -30,7 +30,13 @@ public:
   * Kalman Filter update and prediction math lives in here.
   */
   KalmanFilter ekf_;
+  
+  
+  bool use_laser_;
 
+  ///* if this is false, radar measurements will be ignored (except for init)
+  bool use_radar_;
+  
 private:
   // check whether the tracking toolbox was initialized or not (first measurement)
   bool is_initialized_;
