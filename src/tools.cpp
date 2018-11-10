@@ -1,6 +1,9 @@
 #include <iostream>
 #include "tools.h"
 
+#define EPS 0.0001     // A very small number
+#define EPS2 0.0000001 // A very very small number
+
 using Eigen::VectorXd;
 using Eigen::MatrixXd;
 using std::vector;
