@@ -2,7 +2,9 @@
 #include "tools.h"
 #include "Eigen/Dense"
 #include <iostream>
+#include <math.h>
 
+#define EPS 0.0001 // A very small number
 using namespace std;
 using Eigen::MatrixXd;
 using Eigen::VectorXd;

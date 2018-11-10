@@ -1,5 +1,5 @@
 #include "kalman_filter.h"
-
+#define EPS 0.0001 // A very small number
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
 
