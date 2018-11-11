@@ -139,8 +139,8 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
 
 
 	// Compute the Noise Covatiance Matrix Q
-	float noise_ax = 5.0;
-	float noise_ay = 5.0;
+	float noise_ax = 9.0;
+	float noise_ay = 9.0;
 	// Pre-calculate some variables for the matrix
 	float dt_2   = dt * dt;
 	float dt_3   = dt_2 * dt;
@@ -168,7 +168,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
 	if (measurement_pack.sensor_type_ == MeasurementPackage::RADAR && use_radar_) {
 		ekf_.H_ = tools.CalculateJacobian(ekf_.x_);
 		ekf_.R_ = R_radar_;
-		ekf_.Update2(measurement_pack.raw_measurements_);
+		ekf_.Update_2(measurement_pack.raw_measurements_);
 	} else if (measurement_pack.sensor_type_ == MeasurementPackage::LASER && use_laser_) {
 		ekf_.H_ = H_laser_;
 		ekf_.R_ = R_laser_;
