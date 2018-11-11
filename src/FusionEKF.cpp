@@ -4,7 +4,7 @@
 #include <iostream>
 #include <math.h>
 
-#define EPS 0.0001 // A very small number
+#define EPS 0.00001
 
 using namespace std;
 using Eigen::MatrixXd;
@@ -25,17 +25,16 @@ FusionEKF::FusionEKF() {
   R_laser_ = MatrixXd(2, 2);
   R_radar_ = MatrixXd(3, 3);
   H_laser_ = MatrixXd(2, 4);
-
   Hj_ = MatrixXd(3, 4);
 
   //measurement covariance matrix - laser
   R_laser_ << 0.0225, 0,
-              0,      0.0225;
+        0, 0.0225;
 
   //measurement covariance matrix - radar
-  R_radar_ << 0.09, 0,      0,
-              0,    0.0009, 0,
-              0,    0,      0.09;
+  R_radar_ << 0.09, 0, 0,
+        0, 0.0009, 0,
+        0, 0, 0.09;
 
   /**
   TODO:
@@ -72,8 +71,9 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
       * Remember: you'll need to convert radar from polar to cartesian coordinates.
     */
     // first measurement
+    cout << "EKF: " << endl;
     ekf_.x_ = VectorXd(4);
-    cout << "measurement_type: " << measurement_pack.sensor_type_ << endl;
+    ekf_.x_ << 1, 1, 1, 1;
 
     if (measurement_pack.sensor_type_ == MeasurementPackage::RADAR) {
       /**
@@ -145,8 +145,8 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
 
 
   // Compute the Noise Covatiance Matrix Q
-  float noise_ax = 9.0;
-  float noise_ay = 9.0;
+  float noise_ax = 5.0;
+  float noise_ay = 5.0;
   // Pre-calculate some variables for the matrix
   float dt_2   = dt * dt;
   float dt_3   = dt_2 * dt;
