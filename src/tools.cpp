@@ -68,8 +68,8 @@ MatrixXd Tools::CalculateJacobian(const VectorXd& x_state) {
 	//pre-compute a set of terms to avoid repeated calculation
 	double c1 = px*px+py*py;
 	//check division by zero
-	if(fabs(c1) < EPS2){
-	c1 = EPS2;
+	if(fabs(c1) < 0.0001){
+	c1 = 0.0001;
 	}
 
 	double c2 = sqrt(c1);
