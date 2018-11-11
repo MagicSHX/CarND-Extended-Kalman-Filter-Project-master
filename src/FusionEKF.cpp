@@ -16,10 +16,7 @@ using std::vector;
  */
 FusionEKF::FusionEKF() {
   is_initialized_ = false;
-
-  // if this is false, laser measurements will be ignored (except during init)
   use_laser_ = true;
-  // if this is false, radar measurements will be ignored (except during init)
   use_radar_ = true;
 
   previous_timestamp_ = 0;

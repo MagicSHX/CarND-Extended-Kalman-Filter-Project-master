@@ -64,11 +64,6 @@ public:
    */
   void UpdateEKF(const Eigen::VectorXd &z);
 
-  /**
-   * Common update steps to both linear and extended KF
-   * @param y The error
-   */
-  void CommonUpdate(const Eigen::VectorXd &y);
 };
 
 #endif /* KALMAN_FILTER_H_ */
